@@ -138,3 +138,22 @@ library(mosaic)
 
 plotDist(dist = 't', df = 2, col = "pink")
 ```
+> d. Nilai Kritikal(3)
+```R
+qchisq(p = 0.05, df = 2, lower.tail = FALSE)
+```
+#### _Output_
+![3c](https://user-images.githubusercontent.com/88714570/207364889-55ca06f5-af1a-4d71-baf4-d4488f69934c.png)
+
+> e. Keputusan(3)
+
+`
+Dari hasil t-test didapatkan p-value = 0.03024 berada dibawah 0.05. Maka H0 ditolak.
+`
+
+> f. Kesimpulan(3)
+
+`
+Dapat disimpulkan bahwa terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali.
+`
+
