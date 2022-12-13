@@ -56,6 +56,7 @@ Dari hasil dari poin B, diketahui bahwa nilai dari uji 𝑡 (p-value) adalah 0.0
 ## SOAL 2 (Hipotesa 1 Sampel)
 Diketahui bahwa mobil dikemudikan rata-rata lebih dari 20.000 kilometer per tahun. Untuk menguji klaim ini, 100 pemilik mobil yang dipilih secara acak diminta untuk mencatat jarak yang mereka tempuh. Jika sampel acak menunjukkan rata-rata 23.500 kilometer dan standar deviasi 3900 kilometer. (Kerjakan menggunakan library seperti referensi pada modul). 
 > a. Apakah Anda setuju dengan klaim tersebut?
+
 `
 Setuju, karena dengan rata-rata 23.5000 dari sampel acak dengan standar deviasi 3900 kilometer maka sangat memungkin klaim tersebut valid. Melihat juga grafik dari persebaran data distribusi normal yang dihasilkan akan lebih pekat di daerah lebih dari 20.000 kilometer dengan asumsi nilai tengah grafik tersebut adalah rata-rata dari sampel acak yang didapatkan.
 `
