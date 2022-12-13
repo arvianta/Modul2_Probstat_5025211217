@@ -255,3 +255,57 @@ library("ggplot2")
 
 ggplot(dataa, aes(x = Group, y = Length)) + geom_boxplot(fill = "grey80", colour = "black") + scale_x_discrete() + xlab("Treatment Group") + ylab("Length (cm)")
 ```
+#### _Output_
+![4f](https://user-images.githubusercontent.com/88714570/207377160-3363e063-3306-486d-807d-67088e1e9ece.png)
+
+## SOAL 5 (Anova Dua Arah)
+Data yang digunakan merupakan hasil eksperimen yang dilakukan untuk mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca pelat muka (A, B dan C) pada keluaran cahaya tabung osiloskop. Percobaan dilakukan sebanyak 27 kali dan didapat data sebagai berikut: https://drive.google.com/file/d/1aLUOdw_LVJq6VQrQEkuQhZ8FW43FemTJ/view?usp=sharing
+Dengan data tersebut:
+
+> a. Buatlah plot sederhana untuk visualisasi data
+```R
+install.packages("multcompView")
+library(readr)
+library(ggplot2)
+library(multcompView)
+library(dplyr)
+
+GTL <- read_csv("data_soal_5.csv")
+```
+```R
+head(GTL)
+```
+#### _Output_
+```R
+# A tibble: 6 × 3
+  Glass  Temp Light
+  <chr> <dbl> <dbl>
+1 A       100   580
+2 A       100   568
+3 A       100   570
+4 B       100   550
+5 B       100   530
+6 B       100   579
+```
+```R
+str(GTL)
+```
+#### _Output_
+```R
+spc_tbl_ [27 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Glass: chr [1:27] "A" "A" "A" "B" ...
+ $ Temp : num [1:27] 100 100 100 100 100 100 100 100 100 125 ...
+ $ Light: num [1:27] 580 568 570 550 530 579 546 575 599 1090 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Glass = col_character(),
+  ..   Temp = col_double(),
+  ..   Light = col_double()
+  .. )
+ - attr(*, "problems")=<externalptr> 
+ ```
+ ```R
+ qplot(x = Temp, y = Light, geom = "point", data = GTL) + facet_grid(.~Glass, labeller = label_both)
+ ```
+ #### _Output_
+ ![5a](https://user-images.githubusercontent.com/88714570/207379571-b604700b-79c6-442f-832b-372dd36653f5.png)
