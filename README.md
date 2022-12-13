@@ -157,3 +157,50 @@ Dari hasil t-test didapatkan p-value = 0.03024 berada dibawah 0.05. Maka H0 dito
 Dapat disimpulkan bahwa terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali.
 `
 
+## Soal 4 (Anova satu arah)
+Seorang Peneliti sedang meneliti spesies dari kucing di ITS . Dalam penelitiannya ia mengumpulkan data  tiga spesies kucing yaitu kucing oren, kucing hitam dan kucing putih dengan panjangnya masing-masing. Diketahui
+```
+Dataset -> https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt
+H0 : Tidak ada perbedaan panjang antara ketiga spesies atau rata-rata panjangnya sama 
+```
+> a. Buatlah masing masing jenis spesies menjadi 3 subjek "Grup" (grup 1, grup 2, grup 3). Lalu Gambarkan plot kuantil normal untuk setiap kelompok dan lihat apakah ada outlier utama dalam homogenitas varians.
+
+```R
+library(ggplot2)
+
+dataa <- read.table(url("https://rstatisticsandresearch.weebly.com/uploads/1/0/2/6/1026585/onewayanova.txt"), h = T)
+dataa$Group <- as.factor(dataa$Group)
+dataa$Group = factor(dataa$Group,labels = c("Kucing Oren", "Kucing Hitam", "Kucing Putih"))
+
+class(dataa$Group)
+
+Group1 <- subset(dataa, Group == "Kucing Oren")
+Group2 <- subset(dataa, Group == "Kucing Hitam")
+Group3 <- subset(dataa, Group == "Kucing Putih")
+
+qqnorm(Group1$Length)
+qqline(Group1$Length)
+
+qqnorm(Group2$Length)
+qqline(Group2$Length)
+
+qqnorm(Group3$Length)
+qqline(Group3$Length)
+```
+
+#### _Output_
+![4a](https://user-images.githubusercontent.com/88714570/207373426-95dd13ff-098c-4b99-b4e8-e26b6537ea1a.png)
+![4a2](https://user-images.githubusercontent.com/88714570/207373439-1e811cd5-c6a5-4fd0-8800-5f84bec0b02e.png)
+![4a3](https://user-images.githubusercontent.com/88714570/207373448-934d1674-30b2-436b-a2f3-892188a8e9de.png)
+
+> b. Carilah atau periksalah Homogeneity of variances nya, berapa nilai p yang didapatkan? Apa hipotesis dan kesimpulan yang dapat diambil?
+```R
+bartlett.test(Length ~ Group, data = dataa)
+```
+#### _Output_
+```
+	Bartlett test of homogeneity of variances
+
+data:  Length by Group
+Bartlett's K-squared = 0.43292, df = 2, p-value = 0.8054
+```
