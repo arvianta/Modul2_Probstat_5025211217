@@ -204,3 +204,54 @@ bartlett.test(Length ~ Group, data = dataa)
 data:  Length by Group
 Bartlett's K-squared = 0.43292, df = 2, p-value = 0.8054
 ```
+> c. Untuk uji ANOVA, buatlah model linier dengan panjang versus grup dan beri nama model tersebut model 1.
+```R
+model1 = lm(Length ~ Group, data = dataa)
+anova(model1)
+```
+#### _Output_
+```
+Analysis of Variance Table
+
+Response: Length
+           Df Sum Sq Mean Sq F value Pr(>F)   
+Group       2 10.615  5.3074  7.0982 0.0013 **
+Residuals 102 76.267  0.7477                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+> d. Dari Hasil Poin C, berapakah nilai-p ? Apa yang dapat Anda simpulkan dari H0?
+
+`
+Didapatkan p-value sebesar 0.0013. Dari hasil tersebut dapat disimpulkan bahwa perbedaan panjang kucing yang signifikan berdasarkan grupnya.
+`
+
+> e. Verifikasilah jawaban model 1 dengan Post-hooc test TukeyHSD, dari nilai p yang didapatkan apakah satu jenis kucing lebih panjang dari yang lain? Jelaskan.
+```R
+TukeyHSD(aov(model1))
+```
+#### _Output_
+```
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = model1)
+
+$Group
+                                diff        lwr        upr     p adj
+Kucing Hitam-Kucing Oren  -0.7200000 -1.2116284 -0.2283716 0.0020955
+Kucing Putih-Kucing Oren  -0.1028571 -0.5944855  0.3887713 0.8726158
+Kucing Putih-Kucing Hitam  0.6171429  0.1255145  1.1087713 0.0098353
+```
+
+`
+Dari hasil tersebut, dapat diketahui bahwa p-value setiap 2 jenis grup. Apabila p-value < 0.05, maka panjang kedua grup berbeda. Sedangkan apabila p-value > 0.05, maka panjang kedua grup sama. Ditinjau dari hasil di atas, dapat disimpulkan bahwa kucing putih dan kucing oren memiliki panjang yang sama.
+`
+
+> f. Visualisasikan data dengan ggplot2
+```R
+install.packages("ggplot2")
+library("ggplot2")
+
+ggplot(dataa, aes(x = Group, y = Length)) + geom_boxplot(fill = "grey80", colour = "black") + scale_x_discrete() + xlab("Treatment Group") + ylab("Length (cm)")
+```
