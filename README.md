@@ -102,11 +102,11 @@ Dari data diatas berilah keputusan serta kesimpulan yang didapatkan dari hasil d
 > a. H0 dan H1(3)
 
 `
-H0: miu1 = miu2 (Tidak terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali)
+H0: μ1 = μ2 (Tidak terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali)
 `
 
 `
-H1: miu1 != miu2 (Terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali)
+H1: μ1 != μ2 (Terdapat perbedaan antara rata-rata saham bandung dengan rata-rata saham bali)
 `
 
 > b. Hitung Sampel Statistik(3)
